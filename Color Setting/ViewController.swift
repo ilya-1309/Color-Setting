@@ -23,35 +23,25 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupRedColor()
-        setupGreenColor()
-        setupBlueColor()
+
+        setupSliders()
         updateColor()
         
-        colorDisplay.layer.cornerRadius = 10
+        colorDisplay.layer.cornerRadius = 15
     }
     
-
-    private func setupRedColor() {
-        redColor.value = 0.5
-        redColor.minimumValue = 0
-        redColor.maximumValue = 1
-        redColor.minimumTrackTintColor = .red
-        
+    
+    private func setupSlider(_ slider: UISlider, color: UIColor) {
+        slider.value = 0.5
+        slider.minimumValue = 0
+        slider.maximumValue = 1
+        slider.minimumTrackTintColor = color
     }
     
-    private func setupGreenColor() {
-        greenColor.value = 0.5
-        greenColor.minimumValue = 0
-        greenColor.maximumValue = 1
-        greenColor.minimumTrackTintColor = .green
-    }
-    
-    private func setupBlueColor() {
-        blueColor.value = 0.5
-        blueColor.minimumValue = 0
-        blueColor.maximumValue = 1
-        blueColor.minimumTrackTintColor = .blue
+    private func setupSliders() {
+        setupSlider(redColor, color: .red)
+        setupSlider(greenColor, color: .green)
+        setupSlider(blueColor, color: .blue)
     }
     
     @IBAction func changeDisplayColor() {
@@ -69,6 +59,7 @@ final class ViewController: UIViewController {
             blue: blue,
             alpha: 1
         )
+        
         redLabel.text = String(format: "%.2f", red)
         greenLabel.text = String(format: "%.2f", green)
         blueLabel.text = String(format: "%.2f", blue)
